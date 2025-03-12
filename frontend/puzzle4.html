@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puzzle 4 - Audit Log Mystery</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="container">
+      <header>
+        <h2>Puzzle 4: Audit Log Mystery</h2>
+      </header>
+      <main>
+        <p>Review the following audit log entries and identify the suspicious activity.</p>
+        <form id="audit-form">
+          <div class="puzzle-field">
+            <input type="radio" id="entry1" name="log" value="1">
+            <label for="entry1">Entry 1: User 'john' successfully logged in from a recognized device.</label>
+          </div>
+          <div class="puzzle-field">
+            <input type="radio" id="entry2" name="log" value="2">
+            <label for="entry2">Entry 2: Multiple failed login attempts for user 'admin' from an unknown IP.</label>
+          </div>
+          <div class="puzzle-field">
+            <input type="radio" id="entry3" name="log" value="3">
+            <label for="entry3">Entry 3: User 'alice' updated her profile details.</label>
+          </div>
+          <button type="button" onclick="submitPuzzle4()">Submit</button>
+        </form>
+        <div id="puzzle-result"></div>
+      </main>
+    </div>
+  </body>
+</html>

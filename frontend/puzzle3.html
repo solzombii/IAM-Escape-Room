@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puzzle 3 - Permission Maze</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="container">
+      <header>
+        <h2>Puzzle 3: Permission Maze</h2>
+      </header>
+      <main>
+        <p>Select the access path that grants the minimum required permissions.</p>
+        <form id="maze-form">
+          <div class="puzzle-field">
+            <input type="radio" id="pathA" name="path" value="A">
+            <label for="pathA">Path A – Grants admin and user permissions</label>
+          </div>
+          <div class="puzzle-field">
+            <input type="radio" id="pathB" name="path" value="B">
+            <label for="pathB">Path B – Grants only user permissions</label>
+          </div>
+          <div class="puzzle-field">
+            <input type="radio" id="pathC" name="path" value="C">
+            <label for="pathC">Path C – Grants guest and user permissions</label>
+          </div>
+          <button type="button" onclick="submitPuzzle3()">Submit</button>
+        </form>
+        <div id="puzzle-result"></div>
+      </main>
+    </div>
+  </body>
+</html>

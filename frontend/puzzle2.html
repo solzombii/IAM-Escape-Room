@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puzzle 2 - MFA Madness</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h2>Puzzle 2: MFA Madness</h2>
+        </header>
+        <main>
+            <p>Match each account with the recommended MFA Method</p>
+            <div class="puzzle-form">
+                <div class="puzzle-field">
+                    <label for="ceo-mfa">CEO:</label>
+                    <select id="ceo-mfa">
+                        <option value="Hardware Token">Hardware Token</option>
+                        <option value="Authenticator App">Authenticator App</option>
+                        <option value="SMS">SMS</option>
+                    </select>
+                </div>
+                <div class="puzzle-field">
+                    <label for="customer-mfa">Customer</label>
+                    <select id="customer-mfa">
+                        <option value="Hardware Token">Hardware Token</option>
+                        <option value="Passwordless">Passwordless</option>
+                        <option value="SMS">SMS</option>
+                    </select>
+                </div>
+                <button onclick="submitPuzzle2()">Submit</button>
+            </div>
+            <div id="puzzle-result"></div>
+        </main>
+    </div>
+</body>
+</html>
