@@ -32,7 +32,7 @@ function submitPuzzle1() {
 
   // Correct configuration: Alice should be an Intern and Bob should be HR_Admin
   if (aliceRole === 'Intern' && bobRole === 'HR_Admin') {
-    resultText = 'Correct! Your code is 3729. ';
+    resultText = 'Correct! Your code is 3729. <br>';
     resultText += '<a href="puzzle2.html" class="btn">Next Puzzle</a>';
     hideSubmitButton("submitPuzzle1");
   } else {
@@ -49,7 +49,7 @@ function submitPuzzle2() {
 
   // Correct answers: CEO should use Security Key, customer Officer should use Authenticator App
   if (ceoMFA === 'Hardware Token' && customerMFA === 'Passwordless') {
-    resultText = 'Correct! Your code fragment is 5841. ';
+    resultText = 'Correct! Your code fragment is 5841. <br>';
     resultText += '<a href="puzzle3.html" class="btn">Next Puzzle</a>';
     hideSubmitButton("submitPuzzle2");
   } else {
@@ -72,7 +72,7 @@ function submitPuzzle3() {
   let resultText = '';
   // Correct answer: Path B (Grants only user permissions)
   if (selectedPath === 'B') {
-    resultText = 'Correct! Your code fragment is 3072. ';
+    resultText = 'Correct! Your code fragment is 3072. <br>';
     resultText += '<a href="puzzle4.html" class="btn">Next Puzzle</a>';
     hideSubmitButton("submitPuzzle3");
   } else {
@@ -95,7 +95,7 @@ function submitPuzzle4() {
   let resultText = '';
   // Correct answer: Entry 2 is the suspicious activity
   if (selectedEntry === '2') {
-    resultText = 'Correct! Your code fragment from Puzzle 4 is 9117. ';
+    resultText = 'Correct! Your code fragment from Puzzle 4 is 9117. <br>';
     resultText += '<a href="finalValidation.html" class="btn">Proceed to Final Validation</a>';
     hideSubmitButton("submitPuzzle4");
   } else {
@@ -127,8 +127,9 @@ function validateCodes() {
     const totalSeconds = Math.floor(elapsedTime / 1000);
     const minutes = Math.floor(totalSeconds / 60);
     const seconds = totalSeconds % 60;
+    const storedName = localStorage.getItem('playerName');
     
-    resultMessage = `<span style='color: green;'>Congratulations! All code fragments are correct. You've completed the IAM Escape Room! Total time: ${minutes} minutes and ${seconds} seconds.</span>`;
+    resultMessage = `<span style='color: green;'>Congratulations, ${storedName}! All code fragments are correct. You've completed the IAM Escape Room! Total time: ${minutes} minutes and ${seconds} seconds.</span>`;
     hideSubmitButton("validateCodes");
   } else {
     resultMessage = "<span style='color: red;'>One or more code fragments are incorrect. Please check and try again.</span>";
