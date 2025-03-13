@@ -1,3 +1,16 @@
+//Helper: Check if a required puzzle is completed before allowing access to the next puzzle.
+function checkPuzzleCompletion(requiredPuzzle, redirectPage) {
+  if (!localStorage.getItem(requiredPuzzle)) {
+    alert("You must complete the required puzzle to access this page.");
+    window.location.href = redirectPage;
+  }
+}
+
+document.getElementById('playerForm').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent the default form submission
+  startGame();
+});
+
 // Helper: Hide the submit button associated with the given function name.
 function hideSubmitButton(fnName) {
   const btn = document.querySelector(`button[onclick="${fnName}()"]`);
@@ -17,8 +30,15 @@ function startGame() {
   }
   
   // Save the player's name and start time in localStorage
+  console.log("Starting game for:", playerName);
   localStorage.setItem('playerName', playerName);
   localStorage.setItem('startTime', Date.now());
+
+  // Clear any previous progress flags
+  localStorage.removeItem('puzzle1Solved');
+  localStorage.removeItem('puzzle2Solved');
+  localStorage.removeItem('puzzle3Solved');
+  localStorage.removeItem('puzzle4Solved');
   
   // Redirect to the first puzzle page
   window.location.href = "puzzle1.html";
@@ -34,6 +54,7 @@ function submitPuzzle1() {
   if (aliceRole === 'Intern' && bobRole === 'HR_Admin') {
     resultText = 'Correct! Your code is 3729. <br>';
     resultText += '<a href="puzzle2.html" class="btn">Next Puzzle</a>';
+    localStorage.setItem('puzzle1Solved', 'true');
     hideSubmitButton("submitPuzzle1");
   } else {
     resultText = 'Incorrect configuration, please try again.';
@@ -51,6 +72,7 @@ function submitPuzzle2() {
   if (ceoMFA === 'Hardware Token' && customerMFA === 'Passwordless') {
     resultText = 'Correct! Your code fragment is 5841. <br>';
     resultText += '<a href="puzzle3.html" class="btn">Next Puzzle</a>';
+    localStorage.setItem('puzzle2Solved', 'true');
     hideSubmitButton("submitPuzzle2");
   } else {
     resultText = 'Incorrect selections, please try again.';
@@ -74,6 +96,7 @@ function submitPuzzle3() {
   if (selectedPath === 'B') {
     resultText = 'Correct! Your code fragment is 3072. <br>';
     resultText += '<a href="puzzle4.html" class="btn">Next Puzzle</a>';
+    localStorage.setItem('puzzle3Solved', 'true');
     hideSubmitButton("submitPuzzle3");
   } else {
     resultText = 'Incorrect choice, please try again.';
@@ -97,6 +120,7 @@ function submitPuzzle4() {
   if (selectedEntry === '2') {
     resultText = 'Correct! Your code fragment from Puzzle 4 is 9117. <br>';
     resultText += '<a href="finalValidation.html" class="btn">Proceed to Final Validation</a>';
+    localStorage.setItem('puzzle4Solved', 'true');
     hideSubmitButton("submitPuzzle4");
   } else {
     resultText = 'That doesn’t seem right, please review the logs and try again.';
@@ -137,3 +161,4 @@ function validateCodes() {
   
   document.getElementById("validationResult").innerHTML = resultMessage;
 }
+
